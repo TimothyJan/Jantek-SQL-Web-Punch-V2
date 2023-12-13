@@ -1,0 +1,41 @@
+<mat-card>
+  <mat-card-header class="title-center">
+    <mat-card-title>User Management</mat-card-title>
+  </mat-card-header>
+
+  <!-- User Management Selection -->
+  <div class="flex-container">
+    <div class="flex-item">
+      <mat-label>Options: </mat-label>
+      <br>
+      <mat-form-field>
+        <mat-select [(value)]="userManagementSelection">
+          <mat-option value="Add User">Add User</mat-option>
+          <mat-option value="Delete User">Delete User</mat-option>
+          <mat-option value="Change Password">Change Password</mat-option>
+          <mat-option value="Modify Rights">Modify Rights</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div [ngSwitch]="userManagementSelection">
+    <div *ngSwitchCase="'Add User'">
+      <app-add-user></app-add-user>
+    </div>
+    <div *ngSwitchCase="'Delete User'">
+      <app-delete-user></app-delete-user>
+    </div>
+    <div *ngSwitchCase="'Change Password'">
+      <app-change-password></app-change-password>
+    </div>
+    <div *ngSwitchCase="'Modify Rights'">
+      <app-modify-rights></app-modify-rights>
+    </div>
+    <div *ngSwitchDefault="">
+      <app-add-user></app-add-user>
+    </div>
+  </div>
+
+
+</mat-card>

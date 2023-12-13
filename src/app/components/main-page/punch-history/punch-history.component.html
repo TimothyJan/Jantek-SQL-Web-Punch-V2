@@ -1,0 +1,83 @@
+<mat-card>
+  <mat-card-header class="title-center">
+    <mat-card-title>Punch History</mat-card-title>
+  </mat-card-header>
+
+  <form [formGroup]="punchHistoryForm" (ngSubmit)="onSubmit()">
+    <div class="flex-container">
+      <!-- User -->
+      <div class="flex-item">
+        <mat-label>User</mat-label>
+        <br>
+        <mat-form-field>
+          <input matInput formControlName="user">
+        </mat-form-field>
+        <div *ngIf="(punchHistoryForm.controls['user'].dirty || punchHistoryForm.controls['user'].touched)">
+          <div *ngIf="punchHistoryForm.controls['user'].errors?.['required']">
+            <mat-error>User is required.</mat-error>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pay Period -->
+      <div class="flex-item">
+        <mat-label>Pay Period: {{ dateRangeFrom | date:dateFormat }} - {{ dateRangeTo | date:dateFormat }}</mat-label>
+        <br>
+        <mat-form-field>
+          <mat-select formControlName="payPeriod" (selectionChange)="payPeriodChanged($event.value)">
+            <mat-option value="Current">Current</mat-option>
+            <mat-option value="Previous">Previous</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          type="submit"
+          color="primary">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="flex-container">
+    <div class="flex-item">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Date </th>
+          <td mat-cell *matCellDef="let punch"> {{punch.date}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="in">
+          <th mat-header-cell *matHeaderCellDef> In </th>
+          <td mat-cell *matCellDef="let punch"> {{punch.in}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="out">
+          <th mat-header-cell *matHeaderCellDef> Out </th>
+          <td mat-cell *matCellDef="let punch"> {{punch.out}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="company">
+          <th mat-header-cell *matHeaderCellDef> COMPANY </th>
+          <td mat-cell *matCellDef="let punch"> {{punch.company}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="department">
+          <th mat-header-cell *matHeaderCellDef> DEPARTMENT </th>
+          <td mat-cell *matCellDef="let punch"> {{punch.department}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="job">
+          <th mat-header-cell *matHeaderCellDef> JOB </th>
+          <td mat-cell *matCellDef="let punch"> {{punch.job}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+
+</mat-card>
+

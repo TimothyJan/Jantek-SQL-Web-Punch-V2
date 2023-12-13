@@ -1,0 +1,60 @@
+<form [formGroup]="addUserForm" (ngSubmit)="onAddUser()">
+
+  <div class="flex-container">
+    <div class="flex-item">
+      <mat-label>Employee #</mat-label>
+      <br>
+      <mat-form-field>
+        <input matInput formControlName="employeeNumber">
+      </mat-form-field>
+      <div *ngIf="(addUserForm.controls['employeeNumber'].dirty || addUserForm.controls['employeeNumber'].touched)">
+        <div *ngIf="addUserForm.controls['employeeNumber'].errors?.['required']">
+          <mat-error>Employee Number is required.</mat-error>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-item">
+      <mat-checkbox formControlName="grantAdminstratorRights"></mat-checkbox>
+      <mat-label>Grant Administrator Rights</mat-label>
+    </div>
+  </div>
+
+  <div class="flex-container">
+    <div class="flex-item">
+      <mat-label>Password: </mat-label>
+      <br>
+      <mat-form-field>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+      <div *ngIf="(addUserForm.controls['password'].dirty || addUserForm.controls['password'].touched)">
+        <div *ngIf="addUserForm.controls['password'].errors?.['required']">
+          <mat-error>Password is required.</mat-error>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-item">
+      <mat-label>Confirm your password</mat-label>
+      <br>
+      <mat-form-field>
+        <input matInput type="password" formControlName="confirmPassword">
+      </mat-form-field>
+      <div *ngIf="(addUserForm.controls['confirmPassword'].dirty || addUserForm.controls['confirmPassword'].touched)">
+        <div *ngIf="addUserForm.controls['confirmPassword'].errors?.['required']">
+          <mat-error>Please confirm your password</mat-error>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="add-button">
+    <button
+      mat-raised-button
+      type="submit"
+      color="primary">
+      Submit
+    </button>
+  </div>
+
+</form>

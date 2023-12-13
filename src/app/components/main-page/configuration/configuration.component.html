@@ -1,0 +1,75 @@
+<mat-card>
+  <mat-card-header class="title-center">
+    <mat-card-title>Configuration</mat-card-title>
+  </mat-card-header>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="flex-container">
+      <!-- Punch Mode -->
+      <div class="flex-item">
+        <mat-label>Punch Mode: </mat-label>
+        <br>
+        <mat-form-field>
+          <mat-select formControlName="punchMode" (selectionChange)="punchModeChanged($event.value)">
+            <mat-option value="In/Out">In/Out</mat-option>
+            <mat-option value="In/Out/Job">In/Out/Job</mat-option>
+            <mat-option value="Swipe and Go">Swipe and Go</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Level Change Mode -->
+      <div class="flex-item">
+        <mat-label>Level Change Mode: </mat-label>
+        <br>
+        <mat-form-field>
+          <mat-select formControlName="levelChangeMode">
+            <mat-option value="Level 1">Level 1</mat-option>
+            <mat-option value="Level 2">Level 2</mat-option>
+            <mat-option value="Level 3">Level 3</mat-option>
+            <mat-option value="Level 1 and Level 2">Level 1 and Level 2</mat-option>
+            <mat-option value="Level 1 and Level 3b">Level 1 and Level 3</mat-option>
+            <mat-option value="Level 2 and Level 3">Level 2 and Level 3</mat-option>
+            <mat-option value="Level 1, Level 2 and Level 3">Level 1, Level 2 and Level 3</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Action after Successful Punch -->
+      <div class="flex-item">
+        <mat-label>Action after Successful Punch: </mat-label>
+        <br>
+        <mat-form-field>
+          <mat-select formControlName="actionAfterSuccessfulPunch">
+            <mat-option value="Log Off">Log Off</mat-option>
+            <mat-option value="View Last Punch">View Last Punch</mat-option>
+            <mat-option value="View Messages">View Messages</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="flex-container">
+      <!-- Enable Features -->
+      <div class="flex-item">
+        <mat-label>Enable Features: </mat-label>
+        <br>
+        <mat-checkbox formControlName="punchHistory">Punch History</mat-checkbox>
+        <mat-checkbox formControlName="viewTotalHours">View Total Hours</mat-checkbox>
+        <mat-checkbox formControlName="sendMessages">Send Messages</mat-checkbox>
+        <mat-checkbox formControlName="viewMessages">View Messages</mat-checkbox>
+        <mat-checkbox formControlName="allowUsersToLoginWithoutPassword">Allow users to login without password</mat-checkbox>
+      </div>
+    </div>
+
+    <div class="submit-button">
+      <button
+        mat-raised-button
+        type="submit"
+        color="primary">
+        Submit
+      </button>
+    </div>
+  </form>
+
+</mat-card>

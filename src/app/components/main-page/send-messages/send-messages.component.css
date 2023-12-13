@@ -1,0 +1,17 @@
+
+.to-field {
+  width: 100%;
+}
+
+mat-form-field {
+  width:150%;
+}
+
+.send-button {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  margin: 10px;
+}

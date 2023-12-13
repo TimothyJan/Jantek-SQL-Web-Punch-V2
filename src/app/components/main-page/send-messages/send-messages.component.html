@@ -1,0 +1,73 @@
+<mat-card>
+  <mat-card-header class="title-center">
+    <mat-card-title>Send Messages</mat-card-title>
+  </mat-card-header>
+
+  <form [formGroup]="sendMessagesForm" (ngSubmit)="onSendMessages()">
+    <!-- Private or Public -->
+    <div class="flex-container">
+      <div class="flex-item">
+        <mat-radio-group formControlName="privateOrPublic" (change)="privateOrPublicChanged($event.value)">
+          <mat-radio-button value="private">Private</mat-radio-button>
+          <mat-radio-button value="public">Public</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <!-- To -->
+    <div class="flex-container">
+      <div class="flex-item">
+        <mat-label>To:</mat-label>
+        <br>
+        <mat-form-field class="to-field">
+          <input matInput formControlName="recipient">
+        </mat-form-field>
+        <div *ngIf="(sendMessagesForm.controls['recipient'].dirty || sendMessagesForm.controls['recipient'].touched)">
+          <div *ngIf="sendMessagesForm.controls['recipient'].errors?.['required']">
+            <mat-error>Recipient is required.</mat-error>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Title -->
+    <div class="flex-container">
+      <div class="flex-item">
+        <mat-label>Title:</mat-label>
+        <br>
+        <mat-form-field>
+          <input matInput formControlName="title">
+        </mat-form-field>
+        <div *ngIf="(sendMessagesForm.controls['title'].dirty || sendMessagesForm.controls['title'].touched)">
+          <div *ngIf="sendMessagesForm.controls['title'].errors?.['required']">
+            <mat-error>Title is required.</mat-error>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message -->
+    <div class="flex-container">
+      <div class="flex-item">
+          <mat-form-field>
+            <mat-label>Leave a message</mat-label>
+            <textarea matInput rows="5" formControlName="message" placeholder="Dear Recipient..."></textarea>
+          </mat-form-field>
+        <div *ngIf="(sendMessagesForm.controls['message'].dirty || sendMessagesForm.controls['message'].touched)">
+          <div *ngIf="sendMessagesForm.controls['message'].errors?.['required']">
+            <mat-error>Text field cannot be empty.</mat-error>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="send-button">
+      <button
+        mat-raised-button
+        type="submit"
+        color="primary">
+        Submit
+      </button>
+    </div>
+  </form>
+</mat-card>
