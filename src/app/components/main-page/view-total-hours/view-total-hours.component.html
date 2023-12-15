@@ -1,0 +1,46 @@
+
+<mat-card>
+  <mat-card-header class="title-center">
+    <mat-card-title>View Total Hours</mat-card-title>
+  </mat-card-header>
+
+  <form [formGroup]="ViewTotalHoursForm" (ngSubmit)="onSubmit()">
+
+    <app-date-time></app-date-time>
+
+    <div class="flex-container" *ngIf="isAdmin">
+      <div class="flex-item">
+        <mat-label>Select User: </mat-label>
+        <br>
+        <mat-form-field>
+          <input matInput formControlName="user">
+        </mat-form-field>
+        <button
+          mat-raised-button
+          type="submit"
+          color="primary">
+          Submit
+        </button>
+        <div *ngIf="(ViewTotalHoursForm.controls['user'].dirty || ViewTotalHoursForm.controls['user'].touched)">
+          <div *ngIf="ViewTotalHoursForm.controls['user'].errors?.['required']">
+            <mat-error>User is required.</mat-error>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-container">
+      <div class="flex-item">
+        <mat-label>Total: </mat-label>
+        {{ totalHours }} Hour(s)
+      </div>
+    </div>
+
+    <div class="flex-container">
+      <div class="flex-item">
+        <mat-label>Pay Period: {{ dateRangeFrom | date:dateFormat }} - {{ dateRangeTo | date:dateFormat }}</mat-label>
+      </div>
+    </div>
+
+  </form>
+</mat-card>

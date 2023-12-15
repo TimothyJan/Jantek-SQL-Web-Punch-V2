@@ -15,10 +15,11 @@ export class OrganizerComponent implements OnInit{
   ) {};
 
   ngOnInit(): void {
-    // this.isAuthenticated = this._jantekService.isAuthenticated;
     this._authSubscription = this._jantekService.isAuthenticatedChange.subscribe((value) => {
       this.isAuthenticated = value;
     });
+    // For testing purposes
+    // this.isAuthenticated = this._jantekService.isAuthenticated;
   }
 
   ngOnDestroy() {

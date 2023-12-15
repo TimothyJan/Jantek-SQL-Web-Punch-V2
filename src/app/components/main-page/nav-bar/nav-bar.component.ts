@@ -11,9 +11,10 @@ export class NavBarComponent implements OnInit{
   navLinks = [
     { path: '/punch-screen', label: 'Punch Screen' },
     { path: '/punch-history', label: 'Punch History' },
+    { path: '/view-total-hours', label: 'View Total Hours' },
   ];
 
-  private smallScreenThreshold = 1175;
+  private smallScreenThreshold = 1460;
   isSmallScreen = false;
   // Sidenav toggle flag
   isSidenavOpen = false;
@@ -30,6 +31,7 @@ export class NavBarComponent implements OnInit{
         { path: '/user-management', label: 'User Management' },
         { path: '/punch-screen', label: 'Punch Screen' },
         { path: '/punch-history', label: 'Punch History' },
+        { path: '/view-total-hours', label: 'View Total Hours' },
         { path: '/send-messages', label: 'Send Messages' },
         { path: '/view-messages', label: 'View Messages' },
       ];

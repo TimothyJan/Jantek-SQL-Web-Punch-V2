@@ -7,6 +7,7 @@ import { PunchScreenComponent } from './components/main-page/punch-screen/punch-
 import { PunchHistoryComponent } from './components/main-page/punch-history/punch-history.component';
 import { SendMessagesComponent } from './components/main-page/send-messages/send-messages.component';
 import { ViewMessagesComponent } from './components/main-page/view-messages/view-messages.component';
+import { ViewTotalHoursComponent } from './components/main-page/view-total-hours/view-total-hours.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'user-management', component: UserManagementComponent },
   { path: 'punch-screen', component: PunchScreenComponent },
   { path: 'punch-history', component: PunchHistoryComponent },
+  { path: 'view-total-hours', component: ViewTotalHoursComponent },
   { path: 'send-messages', component: SendMessagesComponent },
   { path: 'view-messages', component: ViewMessagesComponent },
     // redirect to `home` if there is no path

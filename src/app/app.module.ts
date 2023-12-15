@@ -28,6 +28,7 @@ import { PunchScreenComponent } from './components/main-page/punch-screen/punch-
 import { PunchHistoryComponent } from './components/main-page/punch-history/punch-history.component';
 import { SendMessagesComponent } from './components/main-page/send-messages/send-messages.component';
 import { ViewMessagesComponent } from './components/main-page/view-messages/view-messages.component';
+import { ViewTotalHoursComponent } from './components/main-page/view-total-hours/view-total-hours.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ViewMessagesComponent } from './components/main-page/view-messages/view
     PunchHistoryComponent,
     SendMessagesComponent,
     ViewMessagesComponent,
+    ViewTotalHoursComponent,
   ],
   imports: [
     BrowserModule,

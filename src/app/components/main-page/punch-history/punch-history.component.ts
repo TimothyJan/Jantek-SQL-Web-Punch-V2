@@ -39,40 +39,7 @@ export class PunchHistoryComponent implements OnInit{
     }
     /** Needed to get the companyInfo including dateformat */
     this._jantekService.getCompanyInfo();
-    this._jantekService.getDateFormat();
-  }
-
-  dateFormatDisplay(dateformat: number): string {
-    /** Returns the date format display to be used in the pipe of the date */
-    let desc = "";
-    switch(dateformat) {
-      case 0:
-        // "mm/dd/yyyy"
-        desc = "EEEE, M/d/y";
-        break;
-      case 1:
-        // "mm/dd/yy"
-        desc = "EEEE, M/d/yy";
-          break;
-      case 2:
-        // "dd/mm/yyyy"
-        desc = "EEEE, d/M/y";
-        break;
-      case 3:
-        // "dd/mm/yy"
-        desc = "EEEE, d/M/yy";
-        break;
-      case 4:
-        // "yyyy/mm/dd"
-        desc = "EEEE, y/M/d";
-        break;
-      case 5:
-        // "yy/mm/dd"
-        desc = "EEEE, yy/M/d";
-        break;
-      default: desc = "?";
-    }
-    return desc;
+    this.dateFormat = this._jantekService.dateFormatDisplay(this._jantekService.getDateFormat());
   }
 
   payPeriodChanged(event:any) {

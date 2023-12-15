@@ -22,7 +22,9 @@ const httpOptions = {
 export class JantekService {
   isAuthenticatedChange: Subject<boolean> = new Subject<boolean>();
   isAuthenticatedAdminChange: Subject<boolean> = new Subject<boolean>();
-  isAdmin: boolean = false;
+  isAdmin: boolean = true;
+  // for testing purposes
+  // isAuthenticated: boolean = true;
 
   companyInfo: CompanyInfo;
   punchConfig: PunchConfig;
@@ -133,6 +135,39 @@ export class JantekService {
     return this.companyInfo.dateformat;
   }
 
+  /** Returns the date format display to be used in the pipe of the date */
+  dateFormatDisplay(dateformat: number): string {
+    let desc = "";
+    switch(dateformat) {
+      case 0:
+        // "mm/dd/yyyy"
+        desc = "EEEE, M/d/y";
+        break;
+      case 1:
+        // "mm/dd/yy"
+        desc = "EEEE, M/d/yy";
+          break;
+      case 2:
+        // "dd/mm/yyyy"
+        desc = "EEEE, d/M/y";
+        break;
+      case 3:
+        // "dd/mm/yy"
+        desc = "EEEE, d/M/yy";
+        break;
+      case 4:
+        // "yyyy/mm/dd"
+        desc = "EEEE, y/M/d";
+        break;
+      case 5:
+        // "yy/mm/dd"
+        desc = "EEEE, yy/M/d";
+        break;
+      default: desc = "?";
+    }
+    return desc;
+  }
+
   /** Returns the TimeFormat for date-time*/
   getTimeFormat() {
     return this.companyInfo.timeformat;
@@ -211,6 +246,13 @@ export class JantekService {
   /** Get Punch History */
   getPunchHistory(form: any) {
     console.log(form);
+  }
+
+  /** ---------- PUNCH HISTORY ---------- */
+  /** Get Total Hours worked in pay period */
+  getTotalHours(form: any) {
+    console.log(form)
+    return 0;
   }
 
   /** ---------- SEND MESSAGES ---------- */
