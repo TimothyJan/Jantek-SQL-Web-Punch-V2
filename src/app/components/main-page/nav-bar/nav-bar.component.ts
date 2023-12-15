@@ -71,6 +71,6 @@ export class NavBarComponent implements OnInit{
 
   logoff() {
     this._jantekService.logoff();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }
