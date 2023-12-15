@@ -1,12 +1,4 @@
 
-.flex-container {
-  display: flex;
-  flex-flow: row wrap;
-  /* justify-content: space-around; */
-  justify-content: center;
-  column-gap: 5%;
-}
-
 .flex-item {
   padding: 1%;
   padding-left: 0%;
