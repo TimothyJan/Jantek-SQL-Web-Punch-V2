@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { JantekService } from '../../services/jantek.service';
 
 @Component({
@@ -6,15 +6,17 @@ import { JantekService } from '../../services/jantek.service';
   templateUrl: './organizer.component.html',
   styleUrl: './organizer.component.css'
 })
-export class OrganizerComponent {
-  isAuthenticated = false;
+export class OrganizerComponent implements OnInit{
+  isAuthenticated: boolean = false;
   _authSubscription: any;
 
   constructor(
     private _jantekService: JantekService
-    ) {
-    this.isAuthenticated = _jantekService.isAuthenticated;
-    this._authSubscription = _jantekService.isAuthenticatedChange.subscribe((value) => {
+  ) {};
+
+  ngOnInit(): void {
+    // this.isAuthenticated = this._jantekService.isAuthenticated;
+    this._authSubscription = this._jantekService.isAuthenticatedChange.subscribe((value) => {
       this.isAuthenticated = value;
     });
   }

@@ -9,13 +9,10 @@ import { JantekService } from '../../../services/jantek.service';
 })
 export class NavBarComponent implements OnInit{
   navLinks = [
-    { path: '/configuration', label: 'Configuration' },
-    { path: '/user-management', label: 'User Management' },
     { path: '/punch-screen', label: 'Punch Screen' },
     { path: '/punch-history', label: 'Punch History' },
-    { path: '/send-messages', label: 'Send Messages' },
-    { path: '/view-messages', label: 'View Messages' },
   ];
+
   private smallScreenThreshold = 1175;
   isSmallScreen = false;
   // Sidenav toggle flag
@@ -26,7 +23,19 @@ export class NavBarComponent implements OnInit{
     private _jantekService: JantekService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
+    if (this._jantekService.isAdmin) {
+      console.log("works");
+      this.navLinks = [
+        { path: '/configuration', label: 'Configuration' },
+        { path: '/user-management', label: 'User Management' },
+        { path: '/punch-screen', label: 'Punch Screen' },
+        { path: '/punch-history', label: 'Punch History' },
+        { path: '/send-messages', label: 'Send Messages' },
+        { path: '/view-messages', label: 'View Messages' },
+      ];
+    }
+
     // Initialize the flag on component creation
     this.checkScreenSize();
   }
@@ -62,6 +71,6 @@ export class NavBarComponent implements OnInit{
 
   logoff() {
     this._jantekService.logoff();
+    this.router.navigate(['/']);
   }
-
 }

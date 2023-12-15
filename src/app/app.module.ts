@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialModule } from './material.module';
 
-import { WebReportMobileComponent } from './components/web-report-mobile/web-report-mobile.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { OrganizerComponent } from './components/organizer/organizer.component';
 import { LoginFormComponent } from './components/login-page/login-form/login-form.component';
@@ -18,7 +17,6 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { LogoWelcomeComponent } from './components/login-page/logo-welcome/logo-welcome.component';
 
 import { NavBarComponent } from './components/main-page/nav-bar/nav-bar.component';
-
 import { ConfigurationComponent } from './components/main-page/configuration/configuration.component';
 import { UserManagementComponent } from './components/main-page/user-management/user-management.component';
 import { AddUserComponent } from './components/main-page/user-management/add-user/add-user.component';
@@ -34,20 +32,19 @@ import { ViewMessagesComponent } from './components/main-page/view-messages/view
 @NgModule({
   declarations: [
     AppComponent,
-    WebReportMobileComponent,
     FooterComponent,
-    DateTimeComponent,
     OrganizerComponent,
     LoginFormComponent,
     LoginPageComponent,
     LogoWelcomeComponent,
+    NavBarComponent,
     ConfigurationComponent,
     UserManagementComponent,
     AddUserComponent,
     DeleteUserComponent,
     ChangePasswordComponent,
     ModifyRightsComponent,
-    NavBarComponent,
+    DateTimeComponent,
     PunchScreenComponent,
     PunchHistoryComponent,
     SendMessagesComponent,

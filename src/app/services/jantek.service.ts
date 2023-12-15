@@ -20,8 +20,9 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class JantekService {
-  isAuthenticated: boolean = false;
   isAuthenticatedChange: Subject<boolean> = new Subject<boolean>();
+  isAuthenticatedAdminChange: Subject<boolean> = new Subject<boolean>();
+  isAdmin: boolean = false;
 
   companyInfo: CompanyInfo;
   punchConfig: PunchConfig;
@@ -30,18 +31,27 @@ export class JantekService {
   demoUserName:string = "202";
   demoUserPassword:string = "202";
   demoAdminName:string = "201";
-  demoAdminPassword:string = "201"
+  demoAdminPassword:string = "201";
   /** DEMO ONLY */
 
   constructor(
     private _alertService: AlertService,
     private http: HttpClient
-    ) { }
+    ) {}
 
   /** Check user in database and login*/
   login(form: any): boolean {
-    /* Check if user in database */
+    // Admin Authentication
     if(form.username == this.demoAdminName && form.password == this.demoAdminPassword) {
+      this.isAuthenticatedChange.next(true);
+      this.isAuthenticatedAdminChange.next(true);
+      this.isAdmin = true;
+      this._alertService.openSnackBar("Login Successful");
+      this.getCompanyInfo();
+      return true;
+    }
+    // User Authentication
+    else if(form.username == this.demoUserName && form.password == this.demoUserPassword) {
       this.isAuthenticatedChange.next(true);
       this._alertService.openSnackBar("Login Successful");
       this.getCompanyInfo();
@@ -54,6 +64,7 @@ export class JantekService {
   /** Log Off */
   logoff() {
     this.isAuthenticatedChange.next(false);
+    this.isAuthenticatedAdminChange.next(false);
     this._alertService.openSnackBar("Logoff Successful");
   }
 
