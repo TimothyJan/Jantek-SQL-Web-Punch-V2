@@ -8,7 +8,7 @@
 
     <app-date-time></app-date-time>
 
-    <div class="flex-container">
+    <div class="flex-container" *ngIf="isAdmin">
       <div class="flex-item">
         <mat-label>User</mat-label>
         <br>
@@ -22,6 +22,7 @@
         </div>
       </div>
     </div>
+
 
     <div [ngSwitch]="clocktype">
       <div *ngSwitchCase="'In and Out'">

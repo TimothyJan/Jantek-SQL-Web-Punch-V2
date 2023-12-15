@@ -8,10 +8,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './punch-screen.component.css'
 })
 export class PunchScreenComponent implements OnInit{
+  isAdmin: boolean = false;
   clocktype: string;
   currentDateTime = new Date();
   punchForm: FormGroup = new FormGroup({
-    user: new FormControl("", Validators.required),
+    user: new FormControl({value: "", disabled: true}, Validators.required),
     punch: new FormControl("", Validators.required),
     currentDateTime: new FormControl("", Validators.required),
   });
@@ -21,6 +22,13 @@ export class PunchScreenComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
+    this.isAdmin = this._jantekService.isAdmin;
+    if(this.isAdmin){
+      this.punchForm.controls['user'].enable();
+    }
+    else {
+      this.punchForm.controls['user'].disable();
+    }
     /** Needed to get the punchconfig including clocktype */
     this._jantekService.getPunchConfig();
     this.clocktype = this.FkClockTypeDesc(

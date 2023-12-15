@@ -53,6 +53,7 @@ export class JantekService {
     // User Authentication
     else if(form.username == this.demoUserName && form.password == this.demoUserPassword) {
       this.isAuthenticatedChange.next(true);
+      this.isAdmin = false;
       this._alertService.openSnackBar("Login Successful");
       this.getCompanyInfo();
       return true;

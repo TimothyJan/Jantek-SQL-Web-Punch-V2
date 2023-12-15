@@ -25,7 +25,6 @@ export class NavBarComponent implements OnInit{
 
   ngOnInit(): void {
     if (this._jantekService.isAdmin) {
-      console.log("works");
       this.navLinks = [
         { path: '/configuration', label: 'Configuration' },
         { path: '/user-management', label: 'User Management' },

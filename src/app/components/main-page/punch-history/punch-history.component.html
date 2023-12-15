@@ -6,7 +6,7 @@
   <form [formGroup]="punchHistoryForm" (ngSubmit)="onSubmit()">
     <div class="flex-container">
       <!-- User -->
-      <div class="flex-item">
+      <div class="flex-item" *ngIf="isAdmin">
         <mat-label>User</mat-label>
         <br>
         <mat-form-field>

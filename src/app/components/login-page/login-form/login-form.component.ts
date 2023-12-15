@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { JantekService } from '../../../services/jantek.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -15,6 +16,7 @@ export class LoginFormComponent {
 
   constructor(
     private _jantekService: JantekService,
+    private router: Router,
   ) {}
 
   onLogin() {
@@ -22,5 +24,6 @@ export class LoginFormComponent {
       this._jantekService.login(this.loginForm.value);
     }
     this.loginForm.reset();
+    this.router.navigate(['/punch-screen']);
   }
 }

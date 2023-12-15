@@ -12,11 +12,12 @@ const dayInMs = 86400000; // that is: 24 * 60 * 60 * 1000
   styleUrl: './punch-history.component.css'
 })
 export class PunchHistoryComponent implements OnInit{
+  isAdmin: boolean = false;
   dateFormat: string;
   dateRangeFrom: string = new Date(Date.now() - (today.getDay()*dayInMs) - (7*dayInMs)).toString();
   dateRangeTo: string = new Date(Date.now() - (today.getDay()*dayInMs) + (6*dayInMs)).toString();
   punchHistoryForm: FormGroup = new FormGroup ({
-    user: new FormControl("", Validators.required),
+    user: new FormControl({value: "", disabled: true}, Validators.required),
     payPeriod: new FormControl("Current", Validators.required),
     dateRangeFrom: new FormControl(""),
     dateRangeTo: new FormControl(""),
@@ -29,6 +30,13 @@ export class PunchHistoryComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
+    this.isAdmin = this._jantekService.isAdmin;
+    if(this.isAdmin){
+      this.punchHistoryForm.controls['user'].enable();
+    }
+    else{
+      this.punchHistoryForm.controls['user'].disable();
+    }
     /** Needed to get the companyInfo including dateformat */
     this._jantekService.getCompanyInfo();
     this._jantekService.getDateFormat();
