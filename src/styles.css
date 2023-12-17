@@ -41,7 +41,10 @@ body, html {
 mat-card {
   display: flex;
   justify-content: center;
-  padding: 2.5%;
+  padding-top: 2.5%;
+  padding-right: 2.5%;
+  padding-left: 2.5%;
+  padding-bottom: 15%;
   width: 100%;
 }
 
@@ -50,7 +53,6 @@ mat-card-header {
 }
 
 mat-card-title {
-  font-weight: bold;
   color: white;
 }
 
