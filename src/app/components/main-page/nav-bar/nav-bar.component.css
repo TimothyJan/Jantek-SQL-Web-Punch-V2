@@ -17,6 +17,7 @@ mat-toolbar {
   cursor: pointer;
   margin: 0 12px;
   text-decoration: underline;
+  font-size:medium;
 }
 
 .sidenav-container {
