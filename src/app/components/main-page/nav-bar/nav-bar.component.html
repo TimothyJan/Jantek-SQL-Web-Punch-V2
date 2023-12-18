@@ -5,17 +5,7 @@
     </div>
   <!-- </span> -->
 
-  <!-- Display routes in the toolbar when there is enough space -->
-  <div *ngIf="!isScreenSmall()">
-    <span *ngFor="let link of navLinks" class="navbar-link" (click)="navigateTo(link.path)">
-      {{ link.label }}
-    </span>
-    <span class="navbar-link" (click)="logoff()">
-      Logoff
-    </span>
-  </div>
-
-  <button mat-icon-button (click)="toggleSidenav()" *ngIf="isScreenSmall()">
+  <button mat-icon-button (click)="toggleSidenav()">
     <mat-icon>menu</mat-icon>
   </button>
 </mat-toolbar>
