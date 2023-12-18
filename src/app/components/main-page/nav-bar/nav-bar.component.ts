@@ -13,9 +13,6 @@ export class NavBarComponent implements OnInit{
     { path: '/punch-history', label: 'Punch History' },
     { path: '/view-total-hours', label: 'View Total Hours' },
   ];
-
-  private smallScreenThreshold = 1460;
-  isSmallScreen = false;
   // Sidenav toggle flag
   isSidenavOpen = false;
 
@@ -36,9 +33,6 @@ export class NavBarComponent implements OnInit{
         { path: '/view-messages', label: 'View Messages' },
       ];
     }
-
-    // Initialize the flag on component creation
-    this.checkScreenSize();
   }
 
   closeSideNav() {
@@ -58,16 +52,7 @@ export class NavBarComponent implements OnInit{
   /** HostListener to update the flag on window resize */
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.checkScreenSize();
     this.closeSideNav();
-  }
-
-  private checkScreenSize() {
-    this.isSmallScreen = window.innerWidth < this.smallScreenThreshold;
-  }
-
-  isScreenSmall(): boolean {
-    return this.isSmallScreen;
   }
 
   logoff() {
